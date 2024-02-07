@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #text-container {
+        margin-top: 50px;
+      }
+      #button-container {
+        margin-top: 20px;
+      }
+      .button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 0 10px;
+        cursor: pointer;
+        border: none; /* Remove border */
+        border-radius: 5px; /* Add border radius */
+      }
+      #text {
+        font-size: 40px; /* Set initial font size */
+      }
+      #increase-btn {
+        background-color: #03ad3f; /* Blue background color */
+        color: #ffffff; /* White text color */
+      }
+      #decrease-btn {
+        background-color: #f72525; /* Blue background color */
+        color: #ffffff; /* White text color */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gif-container">
+      <img id="gif" src="sad.gif" alt="GIF" width="300" />
+    </div>
+    <div id="text-container">
+      <p id="text">Will you be my Valentine?</p>
+    </div>
+    <div id="button-container">
+      <button id="increase-btn" class="button">Yes</button>
+      <button id="decrease-btn" class="button">No</button>
+    </div>
+
+    <script>
+      const happyText = "Thank You Baby!!";
+      const sadText = [
+        "Are you Sure?",
+        "Really Sure?",
+        "Think Again",
+        "last chance",
+        "Surely not?",
+        "You might regret this!",
+        "Give it another thought!",
+        "Are you abosultely certain?",
+        "This could be a mistake!",
+        "Have a heart",
+        "Don't be so cold!",
+        "Change if heart?",
+        "Woudn't you reconsider",
+        "Is that your final answer?",
+        "You're breaking my heart:(",
+        "Please reconsider?",
+      ];
+      var currentIndex = 0;
+      // Get the text element
+      const textElement = document.getElementById("text");
+      // Get the increase button element
+      const increaseBtn = document.getElementById("increase-btn");
+      // Get the decrease button element
+      const decreaseBtn = document.getElementById("decrease-btn");
+      const gif = document.getElementById("gif");
+      // Function to increase font size
+      function increaseSize() {
+        textElement.textContent = "Yay, Baby";
+        increaseBtn.style.display = "none";
+        decreaseBtn.style.display = "none";
+        gif.src = "happy.gif";
+      }
+
+      // Function to decrease font size
+      function decreaseSize() {
+        increaseBtn.style.fontSize =
+          parseInt(window.getComputedStyle(increaseBtn).fontSize) + 10 + "px";
+        decreaseBtn.textContent = sadText[currentIndex];
+        currentIndex += 1;
+        if (currentIndex === sadText.length) {
+          currentIndex = sadText.length - 1;
+        }
+      }
+
+      // Add click event listeners to buttons
+      increaseBtn.addEventListener("click", increaseSize);
+      decreaseBtn.addEventListener("click", decreaseSize);
+    </script>
+  </body>
+</html>
